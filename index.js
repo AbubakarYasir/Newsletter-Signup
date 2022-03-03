@@ -42,9 +42,9 @@ app.post("/", function (req, res) {
     };
     const request = https.request(url, options, function (response) {
         if (response.statusCode === 200) {
-            res.sendFile(__dirname + "/static/success.html");
+            res.sendFile(__dirname + "/success.html");
         } else {
-            res.sendFile(__dirname + "/static/failure.html");
+            res.sendFile(__dirname + "/failure.html");
         }
 
         response.on("data", function (data) {
@@ -53,6 +53,10 @@ app.post("/", function (req, res) {
     });
     request.write(jsonData);
     request.end();
+});
+
+app.post("/failure", function (req, res) {
+    res.redirect("/");
 });
 
 app.listen(port, function () {
