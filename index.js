@@ -57,8 +57,7 @@ app.post("/", function (req, res) {
 });
 
 app.post("/failure", function (req, res) {
-    // res.redirect("/");
-    res.send("HELLO");
+    res.redirect("/");
 });
 
 app.listen(process.env.PORT || port, function () {
