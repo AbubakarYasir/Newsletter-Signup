@@ -34,7 +34,6 @@ app.post("/", function (req, res) {
     };
 
     const jsonData = JSON.stringify(apiData);
-    console.log(jsonData);
 
     const url = "https://us14.api.mailchimp.com/3.0/lists/857bdac0fc";
     const options = {
@@ -47,10 +46,6 @@ app.post("/", function (req, res) {
         } else {
             res.sendFile(__dirname + "/public/failure.html");
         }
-
-        response.on("data", function (data) {
-            console.log(JSON.parse(data));
-        });
     });
     request.write(jsonData);
     request.end();
