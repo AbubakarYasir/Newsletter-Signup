@@ -1,0 +1,23 @@
+{
+  "name": "newsletter-signup",
+  "version": "1.0.0",
+  "description": "a Simple Newsletter Signup using Express JS to get new contacts with Mailchimp API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbubakarYasir/Newsletter-Signup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbubakarYasir/Newsletter-Signup/issues"
+  },
+  "homepage": "https://github.com/AbubakarYasir/Newsletter-Signup#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "request": "^2.88.2"
+  }
+}
