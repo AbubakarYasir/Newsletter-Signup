@@ -12,10 +12,6 @@ body {
     width: 60%;
 }
 
-.content-container {
-    width: 35%;
-}
-
 .error {
     border-right: 2px solid #e7e7e7;
     height: 30%;
@@ -42,13 +38,13 @@ body {
     margin-bottom: 5%;
 }
 
-.go-back {
+.buttons>.go-back {
     height: 35px;
     width: 35%;
     font-size: smaller;
 }
 
-.contact-me {
+.buttons>.contact-me {
     height: 35px;
     width: 35%;
     font-size: smaller;
@@ -56,6 +52,7 @@ body {
     background-color: #dbe6fa;
     outline: none;
     border: none;
+
 }
 
 .buttons>.contact-me:hover {
