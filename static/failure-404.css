@@ -38,13 +38,14 @@ body {
     margin-bottom: 5%;
 }
 
-.buttons>.go-back {
+.go-back {
     height: 35px;
     width: 35%;
     font-size: smaller;
+    margin-bottom: 20%;
 }
 
-.buttons>.contact-me {
+.contact-me {
     height: 35px;
     width: 35%;
     font-size: smaller;
@@ -55,7 +56,7 @@ body {
 
 }
 
-.buttons>.contact-me:hover {
+.contact-me:hover {
     background-color: #1d5bce;
     color: #dbe6fa;
 }
