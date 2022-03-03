@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
-const http = require("http");
+const https = require("https");
+const { options } = require("request");
 const port = 3000;
 
 const app = express();
@@ -22,7 +23,7 @@ app.post("/", function (req, res) {
         members: [
             {
                 email_address: email,
-                staturs: "subscribed",
+                status: "subscribed",
                 merge_fields: {
                     FNAME: firstName,
                     LNAME: secondName,
@@ -33,8 +34,27 @@ app.post("/", function (req, res) {
 
     const jsonData = JSON.stringify(apiData);
     console.log(jsonData);
-    const url = "https://us14.api.mailchimp.com/3.0/lists/857bdac0fc";
+
+    const url = "https://us14.api.mailchimp.com/3.0/lists/857bdac0f";
+    const options = {
+        method: "POST",
+        auth: "abubakar_yasir:8ee906b8be4893a00fbe9ffbd6b670f3-us14",
+    };
+    const request = https.request(url, options, function (response) {
+        if (response.statusCode === 200) {
+            res.sendFile(__dirname + "/static/success.html");
+        } else {
+            res.sendFile(__dirname + "/static/failure.html");
+        }
+
+        response.on("data", function (data) {
+            console.log(JSON.parse(data));
+        });
+    });
+    request.write(jsonData);
+    request.end();
 });
+
 app.listen(port, function () {
     console.log("Server is started at http://localhost:" + port);
 });
