@@ -7,12 +7,12 @@ const port = 3000;
 
 const app = express();
 
-app.use(express.static("static"));
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/static/signup.html");
+    res.sendFile(__dirname + "/public/signup.html");
 });
 
 app.post("/", function (req, res) {
@@ -43,9 +43,9 @@ app.post("/", function (req, res) {
     };
     const request = https.request(url, options, function (response) {
         if (response.statusCode === 200) {
-            res.sendFile(__dirname + "/static/success.html");
+            res.sendFile(__dirname + "/public/success.html");
         } else {
-            res.sendFile(__dirname + "/static/failure.html");
+            res.sendFile(__dirname + "/public/failure.html");
         }
 
         response.on("data", function (data) {
