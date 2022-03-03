@@ -2,13 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
-const { options } = require("request");
+const options = require("request");
 const port = 3000;
 
 const app = express();
 
 app.use(express.static("static"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/static/signup.html");
@@ -42,9 +43,9 @@ app.post("/", function (req, res) {
     };
     const request = https.request(url, options, function (response) {
         if (response.statusCode === 200) {
-            res.sendFile(__dirname + "/success.html");
+            res.sendFile(__dirname + "/static/success.html");
         } else {
-            res.sendFile(__dirname + "/failure.html");
+            res.sendFile(__dirname + "/static/failure.html");
         }
 
         response.on("data", function (data) {
@@ -56,9 +57,10 @@ app.post("/", function (req, res) {
 });
 
 app.post("/failure", function (req, res) {
-    res.redirect("/");
+    // res.redirect("/");
+    res.send("HELLO");
 });
 
-app.listen(port, function () {
+app.listen(process.env.PORT || port, function () {
     console.log("Server is started at http://localhost:" + port);
 });
