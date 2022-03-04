@@ -2,7 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
-const options = require("request");
+const config = require("./api_keys");
+require("dotenv").config();
+
 const port = 3000;
 
 const app = express();
@@ -14,7 +16,6 @@ app.use(bodyParser.json());
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/public/signup.html");
 });
-
 app.post("/", function (req, res) {
     const firstName = req.body.fName;
     const secondName = req.body.lName;
@@ -34,11 +35,12 @@ app.post("/", function (req, res) {
     };
 
     const jsonData = JSON.stringify(apiData);
+    const secretData = config;
+    const url = "https://us14.api.mailchimp.com/3.0/lists/" + config.mailchimp_audience;
 
-    const url = "https://us14.api.mailchimp.com/3.0/lists/857bdac0fc";
     const options = {
         method: "POST",
-        auth: "abubakar_yasir:8ee906b8be4893a00fbe9ffbd6b670f3-us14",
+        auth: "abubakaryasir:" + config.mailchimp_key,
     };
     const request = https.request(url, options, function (response) {
         if (response.statusCode === 200) {

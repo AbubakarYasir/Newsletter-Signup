@@ -39,7 +39,7 @@
 <body class="text-center">
 
     <main class="form-signin">
-        <form action="/" method="POST">
+        <form action="/" method="POST" name="signup" onsubmit="return validateForm()">
             <img class="mb-4 rounded-3 border-bottom border-primary" src="images/logo.PNG" alt="" width="165"
                 height="150">
             <h1 class="h3 mb-3 fw-normal">Sign Up to My Newsletter!</h1>
@@ -63,7 +63,18 @@
     </main>
 
 
-
+    <script type="text/javascript">
+        function validateForm() {
+            let signup = document.forms.signup;
+            var a = signup.fName.value;
+            var b = signup.lName.value;
+            var c = signup.email.value;
+            if (a == null || a == "", b == null || b == "", c == null || c == "") {
+                alert("Please Fill All Required Field");
+                return false;
+            }
+        }
+    </script>
 </body>
 
 </html>
